@@ -1,6 +1,6 @@
 class Service {
   getBooks() {
-    return fetch('/hot.json').then(res => res.json())
+    return fetch('/list.json').then(res => res.json())
   }
 }
 
