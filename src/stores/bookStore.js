@@ -1,4 +1,4 @@
-import { observable, action, computed, runInAction } from 'mobx'
+import { observable, action, computed, runInAction, flow } from 'mobx'
 import service from '../services'
 
 class BookStore {
@@ -19,11 +19,25 @@ class BookStore {
     return this.cart.length > 0
   }
 
-  @action
+  /* @action
   async fetchBookList() {
-    const data = await service.getBooks()
-    runInAction('changeList', () => (this.list = data))
+    try {
+      const data = await service.getBooks()
+      runInAction('changeList', () => (this.list = data))
+    } catch (err) {
+      console.log(err)
+    }
   }
+ */
+  fetchBookList = flow(function *() {
+    try {
+      const data = yield service.getBooks()
+      // 异步代码块会被自动包装成动作并修改状态
+      this.list = data
+    } catch (err) {
+      console.log(err);
+    }
+  })
 
   @action.bound
   changePrice() {
