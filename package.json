@@ -6,10 +6,15 @@
     "antd": "^3.6.4",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
+    "mobx-state-tree": "^2.2.0",
+    "mst-middlewares": "^2.2.0",
     "react": "^16.4.1",
     "react-app-rewire-mobx": "^1.0.8",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "remotedev": "^0.2.7"
   },
   "scripts": {
     "start": "react-app-rewired start",

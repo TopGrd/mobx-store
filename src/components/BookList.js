@@ -1,4 +1,5 @@
 import React from 'react'
+import { trace } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import BookItem from './BookItem'
 
@@ -11,7 +12,7 @@ const BookList = ({ bookStore }) => {
     removeFromCart,
     isShopping,
   } = bookStore
-
+  trace()
   return (
     <div>
       <div className="book-list">
@@ -22,7 +23,6 @@ const BookList = ({ bookStore }) => {
           ))}
         </ul>
       </div>
-      {console.log(isShopping)}
       {isShopping ? (
         <div className="book-list">
           <h3>购物车</h3>

@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker'
 
 configure({ enforceActions: 'strict' })
 
+
 const stores = {
   bookStore,
 }

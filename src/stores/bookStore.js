@@ -1,4 +1,4 @@
-import { observable, action, computed, runInAction, flow } from 'mobx'
+import { observable, action, computed, runInAction, flow, spy } from 'mobx'
 import service from '../services'
 
 class BookStore {
@@ -7,6 +7,12 @@ class BookStore {
 
   constructor() {
     this.fetchBookList()
+    spy(event => {
+      console.log(event.type, event);
+      if (event.type === 'action') {
+        console.log(`${event.name} with args: ${JSON.stringify(event.arguments)}`)
+      }
+    })
   }
 
   @computed
@@ -29,13 +35,13 @@ class BookStore {
     }
   }
  */
-  fetchBookList = flow(function *() {
+  fetchBookList = flow(function*() {
     try {
       const data = yield service.getBooks()
       // 异步代码块会被自动包装成动作并修改状态
       this.list = data
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   })
 
