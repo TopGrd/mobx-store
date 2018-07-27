@@ -8,7 +8,6 @@ class BookStore {
   constructor() {
     this.fetchBookList()
     spy(event => {
-      console.log(event.type, event);
       if (event.type === 'action') {
         console.log(`${event.name} with args: ${JSON.stringify(event.arguments)}`)
       }
